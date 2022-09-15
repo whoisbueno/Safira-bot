@@ -6,5 +6,7 @@ export default new Event({
   once: true,
   run(client) {
     console.log(`${chalk.whiteBright.bold(`[ ${chalk.blueBright.bold("Client")} ]`)} Logged in as: ${chalk.greenBright.bold(`${client.user.tag}`)}`)
+
+//client.manager.init();
   },
 })

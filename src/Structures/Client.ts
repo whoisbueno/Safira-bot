@@ -1,19 +1,21 @@
-import { ApplicationCommandDataResolvable, Client, ClientEvents, Collection } from "discord.js";
+import { ApplicationCommandDataResolvable, Client, ClientEvents, Collection, ActivityType } from "discord.js";
 import { botConfig } from "./Config/botConfig";
 import "../WebServer/link.ts"
 import { RegisterCommands } from "./Interfaces/RegisterCommand";
 import { CommandType } from "./Types/CommandType";
 import { SlashCommandType } from "./Types/SlashCommandType";
 import { ContextCommandType } from "./Types/ContextCommandType";
-
+//import { Manager } from './Music/Lavalink';
 import { glob } from "glob";
 import chalk from "chalk";
 import { promisify } from "util";
 import { Event } from "./Classes/Event";
+//import { Nodes } from '../../nodes';
 let globPromise = promisify(glob)
 
 export class ExtendedClient extends Client {
   commands: Collection<string, CommandType> = new Collection();
+  //manager: Manager;
   aliases: Collection<string, string> = new Collection()
   slashCommands: Collection<string, SlashCommandType | ContextCommandType> = new Collection();
   config = botConfig;
@@ -28,7 +30,19 @@ export class ExtendedClient extends Client {
         "Guilds",
         "MessageContent",
       ],
+      
+      presence: {
+        status: process.env.enviroment === 'dev' ? 'idle' : 'online',
+        activities: [
+          {
+            name: '/help | Interactions',
+            type: ActivityType.Listening
+          }
+        ]
+    }
+     // shards: 2
     });
+    //this.manager = new Manager(this, Nodes);
   }
 
   start() {

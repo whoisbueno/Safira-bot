@@ -5,6 +5,6 @@ export default new SlashCommandBuilder({
   name: "ping",
   description: "Bot Latency Ping.",
   run({ client, interaction }) {
-    return interaction.reply({ content: "tudo certo aqui nos slash" })
+    return interaction.reply({ content: `🐋 › Ws: **${client.ws.ping}ms**\n🛰 › Shards: **1/1**` })
   },
 })
