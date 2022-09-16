@@ -43,6 +43,7 @@ export class ExtendedClient extends Client {
      // shards: 2
     });
     //this.manager = new Manager(this, Nodes);
+    
   }
 
   start() {
