@@ -35,7 +35,7 @@ export class ExtendedClient extends Client {
         status: process.env.enviroment === 'dev' ? 'idle' : 'online',
         activities: [
           {
-            name: '/help | Interactions',
+            name: '/help | Shard [0]',
             type: ActivityType.Listening
           }
         ]
@@ -98,7 +98,7 @@ export class ExtendedClient extends Client {
       let splitted = filePath.split("/")
       let directory = splitted[splitted.length - 2]
       
-      if (!file?.name) console.log(`${chalk.whiteBright.bold(`[ ${chalk.blueBright.bold("Legacy Commands")} ]`)} Loaded: ${chalk.redBright.bold("No Name")}`)
+      if (!file?.name) console.log(`${chalk.whiteBright.bold(`[ ${chalk.blueBright.bold("Legacy Commands")} ]`)} Load: ${chalk.redBright.bold("No Name")}`)
 
       if (file.name) {
         let properties = { ...file, directory }
