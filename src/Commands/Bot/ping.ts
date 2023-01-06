@@ -5,6 +5,6 @@ export default new CommandBuilder({
   name: "ping",
   description: "Shows Bot Latency Ping",
   run({ client, message }) {
-    message.reply({ content: "slacaralho", })
+    message.reply({ content: `🌱 - WebShocket: **${client.ws.ping}ms**`, })
   },
 })

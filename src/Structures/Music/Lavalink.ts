@@ -20,12 +20,17 @@ export class Manager extends Vulkava {
      ], sendWS: (guildId, payload) => client.guilds.cache.get(guildId)?.shard.send(payload) 
 });
  this.client = client; 
-this.autoplay = new Map(); 
+this.autoplay = new Map();
+
+this.on("nodeReconnect", (node: Node) => {
+console.log(`Node ${node.options.id} Reconnecting servers...`)
+}) 
 this.on('nodeConnect', (node: Node) => { 
 console.log(`Node ${node.options.id} Connected`});
    setInterval(() => { 
      node.send({ op: 'pong' }); 
    }, 45000); 
  });
+  
 
 init() { super.start(this.client.user.id); this.client.on('raw', packet => this.handleVoiceUpdate(packet)); }}

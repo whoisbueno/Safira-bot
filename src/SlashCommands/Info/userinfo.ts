@@ -20,8 +20,8 @@ export default new SlashCommandBuilder({
 
     ], 
   async run({ client, interaction}) {
+    await interaction.deferReply({ ephemeral: false });
     try {
-      await interaction.deferReply();
     const user = interaction.options.getUser("user") || interaction.user
 
     

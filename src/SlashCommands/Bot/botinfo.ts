@@ -5,6 +5,7 @@ export default new SlashCommandBuilder({
   name: "botinfo",
   description: "See a short description about me",
   async run({ client, interaction}) {
+    
     const button = new ButtonBuilder().setStyle(ButtonStyle.Link).setEmoji("📎").setLabel('Invite').setURL('https://discord.com/api/oauth2/authorize?client_id=1018594939451486228&permissions=139589845056&scope=bot%20applications.commands'); 
     const pag1 = new ButtonBuilder().setLabel("Machine").setEmoji("⚙").setStyle(ButtonStyle.Secondary).setCustomId("pag1")
     const row = new ActionRowBuilder<ButtonBuilder>().addComponents([button, pag1]);
@@ -22,9 +23,9 @@ export default new SlashCommandBuilder({
       )
       .setFooter({ text: `Criada por: ${await client.users.fetch('465859183250767882').then(user => user.tag)} & ${await client.users.fetch('714598376137687050').then(user => user.tag)}`, iconURL: `${await client.users.fetch('465859183250767882').then(user => user.displayAvatarURL())}`})
        .setColor("#89b4fa")
-    ], components: [
+    ]/*, components: [
       row
-    ]})
+    ]*/})
     const filter1 = i => i.user.id === interaction.user.id;
 	const collector1 = interaction.channel.createMessageComponentCollector({ filter: filter1, time: 20000 });
 
